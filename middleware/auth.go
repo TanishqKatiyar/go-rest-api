@@ -28,3 +28,8 @@ package main
 import "fmt"
 func main() { fmt.Println("Server starting...") }
 
+err := db.Ping()
+if err != nil {
+  log.Fatal(err)
+}
+
