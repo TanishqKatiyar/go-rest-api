@@ -65,3 +65,8 @@ package main
 import "fmt"
 func main() { fmt.Println("Server starting...") }
 
+type User struct {
+  ID string `json:"id"`
+  Name string `json:"name"`
+}
+
