@@ -87,3 +87,7 @@ type User struct {
   Name string `json:"name"`
 }
 
+func HandleRequest(w http.ResponseWriter, r *http.Request) {
+  w.WriteHeader(http.StatusOK)
+}
+
