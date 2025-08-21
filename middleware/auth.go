@@ -52,3 +52,7 @@ if err != nil {
   log.Fatal(err)
 }
 
+func HandleRequest(w http.ResponseWriter, r *http.Request) {
+  w.WriteHeader(http.StatusOK)
+}
+
