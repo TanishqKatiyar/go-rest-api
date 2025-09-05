@@ -94,3 +94,8 @@ type User struct {
   Name string `json:"name"`
 }
 
+err := db.Ping()
+if err != nil {
+  log.Fatal(err)
+}
+
