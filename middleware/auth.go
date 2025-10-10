@@ -132,3 +132,7 @@ if err != nil {
   log.Fatal(err)
 }
 
+package main
+import "fmt"
+func main() { fmt.Println("Server starting...") }
+
