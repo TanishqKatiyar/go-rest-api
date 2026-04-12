@@ -1,176 +1,41 @@
-type User struct {
-  ID string `json:"id"`
-  Name string `json:"name"`
-}
-
-type User struct {
-  ID string `json:"id"`
-  Name string `json:"name"`
-}
-
 package main
-import "fmt"
-func main() { fmt.Println("Server starting...") }
 
-package main
-import "fmt"
-func main() { fmt.Println("Server starting...") }
-
-func HandleRequest(w http.ResponseWriter, r *http.Request) {
-  w.WriteHeader(http.StatusOK)
-}
-
-func HandleRequest(w http.ResponseWriter, r *http.Request) {
-  w.WriteHeader(http.StatusOK)
-}
-
-err := db.Ping()
-if err != nil {
-  log.Fatal(err)
-}
-
-package main
-import "fmt"
-func main() { fmt.Println("Server starting...") }
-
-err := db.Ping()
-if err != nil {
-  log.Fatal(err)
-}
-
-func HandleRequest(w http.ResponseWriter, r *http.Request) {
-  w.WriteHeader(http.StatusOK)
-}
-
-err := db.Ping()
-if err != nil {
-  log.Fatal(err)
-}
+import (
+	"encoding/json"
+	"log"
+	"net/http"
+	"time"
+)
 
 type User struct {
-  ID string `json:"id"`
-  Name string `json:"name"`
+	ID        string    `json:"id"`
+	Username  string    `json:"username"`
+	Email     string    `json:"email"`
+	CreatedAt time.Time `json:"created_at"`
 }
 
-type User struct {
-  ID string `json:"id"`
-  Name string `json:"name"`
+var mockDatabase = []User{
+	{"1", "admin", "admin@example.com", time.Now()},
+	{"2", "tanishq", "tanishq@example.com", time.Now()},
 }
 
-package main
-import "fmt"
-func main() { fmt.Println("Server starting...") }
-
-package main
-import "fmt"
-func main() { fmt.Println("Server starting...") }
-
-type User struct {
-  ID string `json:"id"`
-  Name string `json:"name"`
+func GetUsers(w http.ResponseWriter, r *http.Request) {
+	w.Header().Set("Content-Type", "application/json")
+	w.WriteHeader(http.StatusOK)
+	json.NewEncoder(w).Encode(mockDatabase)
 }
 
-func HandleRequest(w http.ResponseWriter, r *http.Request) {
-  w.WriteHeader(http.StatusOK)
+func HealthCheck(w http.ResponseWriter, r *http.Request) {
+	w.Header().Set("Content-Type", "application/json")
+	json.NewEncoder(w).Encode(map[string]string{"status": "API is operational"})
 }
 
-func HandleRequest(w http.ResponseWriter, r *http.Request) {
-  w.WriteHeader(http.StatusOK)
+func main() {
+	http.HandleFunc("/api/v1/users", GetUsers)
+	http.HandleFunc("/api/v1/health", HealthCheck)
+
+	log.Println("Go REST API successfully started on port :8080")
+	if err := http.ListenAndServe(":8080", nil); err != nil {
+		log.Fatalf("Server failed to start: %v", err)
+	}
 }
-
-package main
-import "fmt"
-func main() { fmt.Println("Server starting...") }
-
-type User struct {
-  ID string `json:"id"`
-  Name string `json:"name"`
-}
-
-func HandleRequest(w http.ResponseWriter, r *http.Request) {
-  w.WriteHeader(http.StatusOK)
-}
-
-type User struct {
-  ID string `json:"id"`
-  Name string `json:"name"`
-}
-
-err := db.Ping()
-if err != nil {
-  log.Fatal(err)
-}
-
-err := db.Ping()
-if err != nil {
-  log.Fatal(err)
-}
-
-func HandleRequest(w http.ResponseWriter, r *http.Request) {
-  w.WriteHeader(http.StatusOK)
-}
-
-type User struct {
-  ID string `json:"id"`
-  Name string `json:"name"`
-}
-
-type User struct {
-  ID string `json:"id"`
-  Name string `json:"name"`
-}
-
-err := db.Ping()
-if err != nil {
-  log.Fatal(err)
-}
-
-package main
-import "fmt"
-func main() { fmt.Println("Server starting...") }
-
-package main
-import "fmt"
-func main() { fmt.Println("Server starting...") }
-
-func HandleRequest(w http.ResponseWriter, r *http.Request) {
-  w.WriteHeader(http.StatusOK)
-}
-
-err := db.Ping()
-if err != nil {
-  log.Fatal(err)
-}
-
-type User struct {
-  ID string `json:"id"`
-  Name string `json:"name"`
-}
-
-package main
-import "fmt"
-func main() { fmt.Println("Server starting...") }
-
-err := db.Ping()
-if err != nil {
-  log.Fatal(err)
-}
-
-func HandleRequest(w http.ResponseWriter, r *http.Request) {
-  w.WriteHeader(http.StatusOK)
-}
-
-package main
-import "fmt"
-func main() { fmt.Println("Server starting...") }
-
-err := db.Ping()
-if err != nil {
-  log.Fatal(err)
-}
-
-err := db.Ping()
-if err != nil {
-  log.Fatal(err)
-}
-
